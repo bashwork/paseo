@@ -4,7 +4,7 @@ module Paseo
   class App < Sinatra::Base
 
     # ----------------------------------------------------------------
-    # static
+    # settings
     # ----------------------------------------------------------------
     register Mustache::Sinatra
     helpers Paseo::Helpers
