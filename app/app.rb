@@ -7,6 +7,7 @@ module Paseo
     # static
     # ----------------------------------------------------------------
     register Mustache::Sinatra
+    helpers Paseo::Helpers
 
     dir = File.dirname(File.expand_path(__FILE__))
 
@@ -47,7 +48,7 @@ module Paseo
 
     get '/seo/:url/?' do
       @seo = @database.find(params[:url])
-      @seo ? mustache(:index) : not_found
+      @seo ? mustache(:report) : not_found
     end
 
 
@@ -59,22 +60,14 @@ module Paseo
       json(@database.list)
     end
 
-    get '/api/seo/:url/?' do
-      seo = @database.find(params[:url])
-      json(seo ? seo : {:error => 'url does not exist'})
-    end
-
-    post '/api/seo' do
-      url = params.values_at(:url)
+    post '/api/seo/?' do
+      url = params[:url]
       return json(:error => 'maybe stop talking so fast?') if rate_limited?
       return json(:error => 'come on, that is not a real url') if invalid_url?(url)
 
       result = @database.find(url)
-      return result if result
-
-      result = fetch(url)
-      @database.save(result)
-      result
+      result = @database.save(fetch(url)) if not result
+      json(result)
     end
 
 
@@ -103,23 +96,11 @@ module Paseo
     end
 
     #
-    # Check if the url is actually valid.
+    # Check if the |url| is actually valid.
     #
     def invalid_url?(url)
-      false
+      (url =~ URI::regexp).nil?
     end
 
-    # turn post_data into a string for PUT requests
-    def stringify_data(data)
-      if data.is_a? String
-        data
-      elsif data.is_a? Array
-        data.map { |x| stringify_data(x) }.join("&")
-      elsif data.is_a? Curl::PostField
-        data.to_s
-      else
-        raise "Cannot stringify #{data.inspect}"
-      end
-    end
   end
 end

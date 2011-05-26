@@ -24,15 +24,16 @@ module Paseo
     # Update or store the |seo| document in the
     # datastore.
     #
-    def store(seo)
-      @database.store(seo.update('_id' => seo[:url])
+    def save(seo)
+      @database.save_doc(seo.merge('_id' => seo[:url]))
+      seo
     end
 
     #
     # Return a list of the |count| most recent
     # seo documents.
     #
-    def list(count)
+    def list(count=10)
       @database.documents['rows'].map {|doc| doc['id'] }
     end
 
