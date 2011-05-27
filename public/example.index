@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>hurl</title>
+    <title>paSEO</title>
     <meta content="Hurl makes HTTP requests and is the perfect tool for testing APIs." name="description" />
 
       <link rel="stylesheet" type="text/css" href="./css/reset.css">
@@ -19,20 +19,18 @@
 
     <div id="content">
 
-      <div class="panel seo-search">
+      <div class="panel" id="seo-search">
         <h2>Start Seoing</h2>
-        </div>
         <div class="panel-content">
            <form id="seo-form" method="post" action="/api/seo/">
             <input type="text" name="url" title="url" placeholder="url" />
-            <button type="submit" class="bigbutton">Seo</button>
+            <button type="submit" class="bigbutton">Submit</button>
           <form>
         </div>
       </div>
 
-      <div class="panel seo-results">
+      <div class="panel" id="seo-results">
         <h2>Look What I Found</h2>
-        </div>
         <div class="panel-content">
         </div>
       </div>

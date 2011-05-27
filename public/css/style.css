@@ -7,6 +7,14 @@ body {
   background: #1c252a url('../img/background.png') repeat-x;
 }
 
+a {
+  text-decoration:none;
+  color: #888;
+}
+a:hover {
+  color: #aaa;
+}
+
 /**
  * main layout
  * ------------------------------------------------------*/
@@ -29,9 +37,52 @@ body {
   text-align: right;
   padding: 4px 50px;
   margin-top: 60px;
+  -moz-border-radius-bottomleft: 14px;
+  -moz-border-radius-bottomright: 14px;
+  background: rgba(255,255,255,0.1);
+  margin: 10px 0;
 }
 
 .panel {
-  padding: 10px;
-  background: rgba(255,255,255,0.2);
+  -moz-border-radius: 14px;
+  background: rgba(255,255,255,0.1);
+  margin: 10px 0;
+}
+.panel h2 {
+  -moz-border-radius-topleft: 14px;
+  -moz-border-radius-topright: 14px;
+  padding: 10px 10px;
+  font-size: 120%;
+  background: rgba(255,255,255,0.1);
+  color: #efefef;
+}
+.panel-content {
+  padding: 20px 10px;
+}
+
+/**
+ * unique layout
+ * ------------------------------------------------------*/
+#seo-search input {
+  font-size: 110%;
+  width: 80%;
+  color: #444;
+  border: 1px solid #bbb;
+  padding: 6px;
+}
+#seo-search button {
+  font-size: 110%;
+  padding: 4px 10px 7px 10px;
+  background: #e9eaea;
+  border: 1px solid #ccc;
+  -moz-border-radius: 2px;
+  text-shadow: 1px 1px 0 #fff;
+  color: #333;
+  cursor:pointer;
+}
+#seo-search button:hover {
+  color: #666;
+}
+
+#seo-results {
 }
