@@ -1,7 +1,37 @@
 /**
- * main layout
- * ------------------------------------------------------*/
-
-/**
  * colors and fonts
  * ------------------------------------------------------*/
+body {
+  font-family: "lucida Grande", arial, sans-serif;
+  color: #efefef;
+  background: #1c252a url('../img/background.png') repeat-x;
+}
+
+/**
+ * main layout
+ * ------------------------------------------------------*/
+#inset {
+  margin: 0 auto;
+  width: 60%;
+  height: 100%;
+}
+
+#header {
+  margin-bottom: 30px;
+}
+
+#content {
+}
+
+#footer {
+  font-size: 90%;
+  color: #666;
+  text-align: right;
+  padding: 4px 50px;
+  margin-top: 60px;
+}
+
+.panel {
+  padding: 10px;
+  background: rgba(255,255,255,0.2);
+}

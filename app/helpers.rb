@@ -1,5 +1,6 @@
 require 'helpers/sinatra'
 require 'helpers/seoparser'
+require 'helpers/validator'
 
 module Paseo
   module Helpers
@@ -50,6 +51,17 @@ module Paseo
       robots[key] << value.strip
     end
     robots
+  end
+
+  #
+  # Given a |url|, peroform a number of validation
+  # tests on its markup.
+  #
+  def validate(url)
+    return {
+      :xhtml => Validator.validate_xhtml(url),
+      :css   => Validator.validate_css(url)
+    }
   end
 
   #

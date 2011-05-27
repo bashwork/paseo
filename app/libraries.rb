@@ -10,6 +10,7 @@ require 'nokogiri'
 require 'yajl'
 require 'mustache/sinatra'
 require 'curb'
+require 'w3c_validators'
 
 $LOAD_PATH.unshift File.expand_path(File.dirname(__FILE__))
 
